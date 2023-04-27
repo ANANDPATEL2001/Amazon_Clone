@@ -1,6 +1,7 @@
 export const initialState = {
     // Initially the Basket is empty
     basket: [],
+    user: null
 };
 
 // Now we are using the 'Selector' whic is basically used in Production Environment
@@ -36,6 +37,12 @@ const reducer = (state, action) => {
                 ...state,
                 basket: newBasket
                 // basket: state.basket.filter(item => item.id !== action.id)
+            }
+
+        case 'SET_USER':
+            return {
+                ...state,
+                user: action.user
             }
 
         default:

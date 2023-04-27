@@ -6,7 +6,7 @@ import { useStateValue } from './StateProvider';
 import CheckoutProduct from './CheckoutProduct';
 
 const Checkout = () => {
-    const [{ basket }, dispatch] = useStateValue();
+    const [{ basket, user }, dispatch] = useStateValue();
 
     return (
         <div className='checkout'>
@@ -15,6 +15,8 @@ const Checkout = () => {
                     alt="loading amazon ads" />
 
                 <div className='checkout__title'>
+                    {/* Here ? symbol is used as an asynchronous approach while system fetch the data from the DB */}
+                    <h3>Hello, {user?.email}</h3>
                     <h2>Your Shopping Basket</h2>
 
                     {
