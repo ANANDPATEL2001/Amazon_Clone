@@ -1,35 +1,45 @@
 import React from 'react';
-import CurrencyFormat from 'react-currency-format';
+// import NumberFormat from 'react-number-format';
+// import CurrencyFormat from 'react-currency-format';
 
 import './Subtotal.css';
 import { useStateValue } from './StateProvider';
 import { getBasketTotal } from './reducer';
 
+
+export const getBasketPrice = (basket) => {
+    var sum = 0;
+    basket?.map((item) => {
+        sum += item.price;
+    })
+    return (sum)
+};
+
+
+
+
 const Subtotal = () => {
     const [{ basket }, dispatch] = useStateValue();
 
+    const value = new Intl.NumberFormat('en-US',
+        {
+            style: 'currency',
+            currency: 'USD'
+        }).format(getBasketPrice(basket));
+
     return (
         <div className='subtotal'>
-            <CurrencyFormat
-                renderText={(value) => (
-                    <>
-                        <p>
-                            {/* Homework */}
-                            Subtotal ({basket.length} items): <strong>{value}</strong>
-                        </p>
-                        <small className='subtotal__gift'>
-                            <input type='checkbox' />This Order contains a gift
-                        </small>
-                    </>
-                )}
-                decimalScale={2}
-                // value={getBasketTotal(basket)}
-                value={getBasketTotal(basket)}  //Homework
-                displayType={'text'}
-                thousandSeperator={true}
-                prefix={'$'}
-            />
-
+            <>
+                <p>
+                    Subtotal ({basket.length} items):
+                    <strong>
+                        {value};
+                    </strong>
+                </p>
+                <small className='subtotal__gift'>
+                    <input type='checkbox' />This Order contains a gift
+                </small>
+            </>
             <button>Proceed to Checkout</button>
         </div>
     )

@@ -1,6 +1,8 @@
 import React from 'react';
-import SearchIcon from '@mui/icons-material/Search';
-import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
+// import SearchIcon from '@mui/icons-material/Search';
+// import ShoppingBasketIcon from '@mui/icons-material/ShoppingBasket';
+import { IoIosBasket } from 'react-icons/io';
+import { AiOutlineSearch } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
 
 import './Header.css';
@@ -18,7 +20,7 @@ const Header = () => {
 
             <div className='header__search'>
                 <input className='header__searchInput' type='text' />
-                <SearchIcon className='header__searchIcon' />
+                <AiOutlineSearch className='header__searchIcon' />
             </div>
 
             <div className='header__nav'>
@@ -39,7 +41,7 @@ const Header = () => {
 
                 <Link to='/Checkout'>
                     <div className='header__optionBasket'>
-                        <ShoppingBasketIcon />
+                        <IoIosBasket />
                         {/* Below '?' symbole is used to handle the error in case it could not determine the length of basket */}
                         <span className='header__optionLineTwo header__basketCount'>{basket?.length}</span>
                     </div>
