@@ -26,7 +26,7 @@ const CheckoutProduct = ({ id, image, title, price, rating }) => {
                 </p>
                 <div className='checkoutProduct__rating'>
                     {/* Below we can also ignore what's inside of the map() parameter i.e. map(() => <p>star</p>) */}
-                    {Array(rating).fill().map((_, i) => (<p>star</p>))}
+                    {Array(rating).fill().map((_, i) => (<p>🌟</p>))}
                 </div>
 
                 <button onClick={removeFromBasket}>Remove from Basket</button>
