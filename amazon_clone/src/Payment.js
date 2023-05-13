@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import axios from './axios';
 import { Link, useNavigate } from 'react-router-dom';
 import { useElements, useStripe, CardElement } from '@stripe/react-stripe-js';
 
 import './Payment.css'
+import axios from './axios';
 import { useStateValue } from './StateProvider'
 import CheckoutProduct from './CheckoutProduct';
 import { getBasketPrice } from './Subtotal';
 import { getBasketTotal } from './reducer';
+import { db } from './firebase';
 
 const Payment = () => {
     const [{ basket, user }, dispatch] = useStateValue();
@@ -29,15 +30,16 @@ const Payment = () => {
             const response = await axios({
                 method: 'post',
                 // Here, Stripe expects the total amount in a currencies subunits (i.e. 1 USD = 650 cents )
-                url: `/payments/create?total=${getBasketTotal(basket) * 650}`
+                url: `/payments/create?total=${getBasketTotal(basket) * 100}`
             });
             setClientSecret(response.data.clientSecret)
         }
 
-        getClientSecret();
+        getClientSecret()
     }, [basket])
 
     console.log('Client_Secrete : ', clientSecret)
+    console.log('User is : ', user)
 
     const handleSubmit = async (e) => {
         // All the Stripe processing and payment related stuffs goes here
@@ -48,16 +50,38 @@ const Payment = () => {
         const payload = await stripe.confirmCardPayment(clientSecret, {
             payment_method: {
                 card: elements.getElement(CardElement)
+                // card: {
+                //     token: 'tok_visa',
+                // },
             }
         }).then(({ paymentIntent }) => {
+
+            console.log("paymentIntent is : ", { paymentIntent })
             // 'paymentIntent' is just the payment Confirmation
 
-            setSucceeded(true);
-            setError(null);
-            setProcessing(false);
+            // Here, We are creating/accessing the DB with collection of 'users' specific to their id
+            // Inside the 'users' collection we have 'orders' collection with payment id && setting parameter further
+            db
+                .collection('users')
+                .doc(user?.uid)
+                .collection('orders')
+                .doc(paymentIntent.id)
+                .set({
+                    basket: basket,
+                    amount: paymentIntent.amount,
+                    created: paymentIntent.created
+                })
+
+            setSucceeded(true)
+            setError(null)
+            setProcessing(false)
+
+            dispatch({
+                type: 'EMPTY_BASKET'
+            })
 
             // 'replace: true', the navigation will replace the current entry in the history stack instead of adding a new one
-            history('/orders', { replace: true });
+            history('/orders', { replace: true })
         })
     }
 

@@ -11,6 +11,7 @@ import Login from "./Login";
 import { auth } from "./firebase";
 import { useStateValue } from "./StateProvider";
 import Payment from "./Payment";
+import Orders from "./Orders";
 
 // 'loadstripe()' method basically takes the Payment API as an input 
 // This API is public (test mode) hence no need to hide it(for security reasons)
@@ -29,26 +30,26 @@ function App() {
         // User successfully logged in
         dispatch({
           type: 'SET_USER',
-          user: authUser
+          user: authUser,
         })
       }
       else {
         // User id logged out
         dispatch({
           type: 'SET_USER',
-          user: null
+          user: null,
         })
       }
     }
-    )
-  }, [])
+    );
+  }, []);
 
   return (
     // Here we are using BEM (Block Element Modifier) Methodology
     <Router>
       <div className='app'>
         <Routes>
-          {/* Below we are using Component attribute with React.Fragment to render multiple Components */}
+          {/* Below we are using 'Component' attribute with React.Fragment to render multiple Components */}
           <Route path="/login" Component={() =>
             <Fragment>
               <Login />
@@ -57,7 +58,7 @@ function App() {
           <Route path="/orders" Component={() =>
             <Fragment>
               <Header />
-              <Home />
+              <Orders />
             </Fragment>
           } />
           <Route path="/checkout" Component={() =>

@@ -3,7 +3,7 @@ import React from 'react';
 import './CheckoutProduct.css';
 import { useStateValue } from './StateProvider';
 
-const CheckoutProduct = ({ id, image, title, price, rating }) => {
+const CheckoutProduct = ({ id, image, title, price, rating, hideButton }) => {
 
     const [{ basket }, dispatch] = useStateValue();
 
@@ -28,8 +28,9 @@ const CheckoutProduct = ({ id, image, title, price, rating }) => {
                     {/* Below we can also ignore what's inside of the map() parameter i.e. map(() => <p>star</p>) */}
                     {Array(rating).fill().map((_, i) => (<p>🌟</p>))}
                 </div>
-
-                <button onClick={removeFromBasket}>Remove from Basket</button>
+                {!hideButton && (
+                    <button onClick={removeFromBasket}>Remove from Basket</button>
+                )}
             </div>
 
         </div>
