@@ -34,6 +34,8 @@ app.post('/payments/create', async (req, res) => {
         // Following 'total' amount is the sub-units of currency
         amount: total,
         currency: 'usd',
+        payment_method: 'pm_card_visa',
+        payment_method_types: ['card'],
     });
 
     res.status(201).send({
