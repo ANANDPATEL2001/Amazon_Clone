@@ -1,0 +1,64 @@
+.home {
+    display: flex;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 60px;
+    max-width: 1600px;
+    /* overflow: none; */
+}
+
+.carousal_conatainer {
+    /* margin-bottom: -120px; */
+    margin-bottom: -110px;
+}
+
+.carousel-item img {
+    /* align-items: center;
+    margin-top: 10px; */
+    position: relative;
+}
+
+.home__row__container {
+    margin: 2rem 0.5rem 1rem;
+    padding: 10px;
+}
+
+.home__row {
+    display: flex;
+    z-index: 1;
+    margin-left: 5px;
+    margin-right: 5px;
+}
+
+.home__image {
+    width: 100%;
+    /* z-index: -1; */
+    /* margin-bottom: -150px; */
+    /* 'mask-image' is basically used to give the beautifull fading effect to the  image */
+    mask-image: linear-gradient(to bottom, rgba(0, 0, 0, 1), rgba(0, 0, 0, 0));
+}
+
+@media only screen and (max-width: 1020px) {
+    .carousal_conatainer {
+        height: 65vh;
+        margin-bottom: -120px;
+    }
+
+    .home__row {
+        flex-wrap: wrap;
+    }
+}
+
+@media only screen and (max-width: 720px) {
+    .carousal_conatainer {
+        height: 50vh;
+        margin-bottom: -150px;
+    }
+}
+
+@media only screen and (max-width: 480px) {
+    .carousal_conatainer {
+        height: 45vh;
+    }
+}

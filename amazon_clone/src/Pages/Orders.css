@@ -1,5 +1,7 @@
 .orders {
+    min-height: 50vh;
     padding: 20px 80px;
+    margin-top: 60px;
 }
 
 .orders>h1 {

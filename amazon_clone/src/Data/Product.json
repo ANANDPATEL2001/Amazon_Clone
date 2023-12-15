@@ -1,0 +1,274 @@
+{
+    "Product_info": [
+        {
+            "id": "1",
+            "title": "Smartphone",
+            "description": "High-performance smartphone with advanced features.",
+            "image": "https://m.media-amazon.com/images/I/6196XqJjUZL._AC_UY327_FMwebp_QL65_.jpg",
+            "rating": 5,
+            "price": 599.99,
+            "brand": "TechMaster",
+            "availability": "Out Of Stock"
+        },
+        {
+            "id": "2",
+            "title": "Laptop",
+            "description": "Powerful laptop with a sleek design.",
+            "image": "https://m.media-amazon.com/images/I/617rprfdhRL._AC_UY327_FMwebp_QL65_.jpg",
+            "rating": 4,
+            "price": 999.99,
+            "brand": "TechWiz",
+            "availability": "In Stock"
+        },
+        {
+            "id": "3",
+            "title": "Wireless Headphones",
+            "description": "Premium wireless headphones for an immersive audio experience.",
+            "image": "https://m.media-amazon.com/images/I/61wbr2lSdJL._AC_UY327_FMwebp_QL65_.jpg",
+            "rating": 4,
+            "price": 149.99,
+            "brand": "SoundBliss",
+            "availability": "In Stock"
+        },
+        {
+            "id": "4",
+            "title": "Smart Watch",
+            "description": "Stay connected with this stylish and functional smartwatch.",
+            "image": "https://m.media-amazon.com/images/I/61TXR+7EpUL._AC_UY327_FMwebp_QL65_.jpg",
+            "rating": 4.3,
+            "price": 199.99,
+            "brand": "TechGear",
+            "availability": "Out Of Stock"
+        },
+        {
+            "id": "5",
+            "title": "4K TV",
+            "description": "Experience stunning 4K resolution on this large-screen TV.",
+            "image": "https://m.media-amazon.com/images/W/MEDIAX_792452-T2/images/I/71lkN8wCWZL._AC_UY327_FMwebp_QL65_.jpg",
+            "rating": 4.6,
+            "price": 799.99,
+            "brand": "VisualTech",
+            "availability": "In Stock"
+        },
+        {
+            "id": "6",
+            "title": "Bluetooth Speaker",
+            "description": "Portable Bluetooth speaker for music on the go.",
+            "image": "https://m.media-amazon.com/images/W/MEDIAX_792452-T2/images/I/81Oa+WnnA4L._AC_UY327_FMwebp_QL65_.jpg",
+            "rating": 4.2,
+            "price": 49.99,
+            "brand": "SoundWave",
+            "availability": "Out Of Stock"
+        },
+        {
+            "id": "7",
+            "title": "Digital Camera",
+            "description": "Capture life's moments with this high-resolution digital camera.",
+            "image": "https://m.media-amazon.com/images/W/MEDIAX_792452-T2/images/I/81swjZCbdiL._AC_UY327_FMwebp_QL65_.jpg",
+            "rating": 4.4,
+            "price": 299.99,
+            "brand": "PixelShot",
+            "availability": "In Stock"
+        },
+        {
+            "id": "8",
+            "title": "Tablet",
+            "description": "Versatile tablet for work and entertainment.",
+            "image": "https://example.com/products/tablet.jpg",
+            "rating": 4.3,
+            "price": 249.99,
+            "brand": "TechPad",
+            "availability": "In Stock"
+        },
+        {
+            "id": "9",
+            "title": "Gaming Console",
+            "description": "Experience the latest games with this gaming console.",
+            "image": "https://example.com/products/console.jpg",
+            "rating": 4.7,
+            "price": 399.99,
+            "brand": "GameMaster",
+            "availability": "In Stock"
+        },
+        {
+            "id": "10",
+            "title": "Coffee Maker",
+            "description": "Start your day with a perfect cup of coffee.",
+            "image": "https://example.com/products/coffeemaker.jpg",
+            "rating": 4.6,
+            "price": 79.99,
+            "brand": "BrewMaster",
+            "availability": "In Stock"
+        },
+        {
+            "id": "11",
+            "title": "Bluetooth Earbuds",
+            "description": "Wireless earbuds for a seamless audio experience.",
+            "image": "https://example.com/products/earbuds.jpg",
+            "rating": 4.5,
+            "price": 89.99,
+            "brand": "AudioBliss",
+            "availability": "In Stock"
+        },
+        {
+            "id": "12",
+            "title": "Refrigerator",
+            "description": "Spacious refrigerator with advanced cooling technology.",
+            "image": "https://m.media-amazon.com/images/W/MEDIAX_792452-T2/images/I/6130tyKV5bL._AC_UY327_FMwebp_QL65_.jpg",
+            "rating": 4.6,
+            "price": 799.99,
+            "brand": "CoolTech",
+            "availability": "In Stock"
+        },
+        {
+            "id": "13",
+            "title": "Fitness Tracker",
+            "description": "Stay active and track your fitness goals with this tracker.",
+            "image": "https://m.media-amazon.com/images/W/MEDIAX_792452-T2/images/I/71nzWfUAt+L._AC_UY327_FMwebp_QL65_.jpg",
+            "rating": 4.3,
+            "price": 69.99,
+            "brand": "FitLife",
+            "availability": "In Stock"
+        },
+        {
+            "id": "14",
+            "title": "Vacuum Cleaner",
+            "description": "Efficient vacuum cleaner for a clean home.",
+            "image": "https://m.media-amazon.com/images/W/MEDIAX_792452-T2/images/I/71JS5wMHfnL._AC_UY327_FMwebp_QL65_.jpg",
+            "rating": 4.4,
+            "price": 129.99,
+            "brand": "CleanPro",
+            "availability": "In Stock"
+        },
+        {
+            "id": "15",
+            "title": "Microwave Oven",
+            "description": "Convenient microwave oven for quick meals.",
+            "image": "https://m.media-amazon.com/images/W/MEDIAX_792452-T2/images/I/711fY0Yg05L._AC_UY327_FMwebp_QL65_.jpg",
+            "rating": 4.2,
+            "price": 99.99,
+            "brand": "HeatMaster",
+            "availability": "In Stock"
+        },
+        {
+            "id": "16",
+            "title": "Smart Thermostat",
+            "description": "Control your home's temperature with this smart thermostat.",
+            "image": "https://m.media-amazon.com/images/W/MEDIAX_792452-T2/images/I/61A+x8c9VeL._AC_UL480_FMwebp_QL65_.jpg",
+            "rating": 4.5,
+            "price": 149.99,
+            "brand": "EcoTech",
+            "availability": "In Stock"
+        },
+        {
+            "id": "17",
+            "title": "Desk Chair",
+            "description": "Ergonomic desk chair for a comfortable work environment.",
+            "image": "https://m.media-amazon.com/images/W/MEDIAX_792452-T2/images/I/71wqxn2Ox+L._AC_UL480_FMwebp_QL65_.jpg",
+            "rating": 4.6,
+            "price": 149.99,
+            "brand": "ErgoComfort",
+            "availability": "Out Of Stock"
+        },
+        {
+            "id": "18",
+            "title": "Hiking Backpack",
+            "description": "Durable hiking backpack for outdoor adventures.",
+            "image": "https://m.media-amazon.com/images/W/MEDIAX_792452-T2/images/I/71EMIzH0YCL._AC_UL480_FMwebp_QL65_.jpg",
+            "rating": 4.4,
+            "price": 79.99,
+            "brand": "AdventureGear",
+            "availability": "In Stock"
+        },
+        {
+            "id": "19",
+            "title": "Sunglasses",
+            "description": "Stylish sunglasses with UV protection for sunny days.",
+            "image": "https://example.com/products/sunglasses.jpg",
+            "rating": 4.7,
+            "price": 49.99,
+            "brand": "SunStyle",
+            "availability": "In Stock"
+        },
+        {
+            "id": "20",
+            "title": "Gaming Mouse",
+            "description": "Precision gaming mouse for gamers.",
+            "image": "https://example.com/products/gamingmouse.jpg",
+            "rating": 4.5,
+            "price": 39.99,
+            "brand": "GameTech",
+            "availability": "In Stock"
+        },
+        {
+            "id": "21",
+            "title": "Smart Home Camera",
+            "description": "Monitor your home with this smart camera.",
+            "image": "https://example.com/products/smartcamera.jpg",
+            "rating": 4.3,
+            "price": 69.99,
+            "brand": "HomeGuard",
+            "availability": "In Stock"
+        },
+        {
+            "id": "22",
+            "title": "Toaster",
+            "description": "Efficient toaster for a quick breakfast.",
+            "image": "https://example.com/products/toaster.jpg",
+            "rating": 4.2,
+            "price": 29.99,
+            "brand": "ToastMaster",
+            "availability": "In Stock"
+        },
+        {
+            "id": "23",
+            "title": "Bluetooth Keyboard",
+            "description": "Wireless keyboard for easy typing on multiple devices.",
+            "image": "https://example.com/products/keyboard.jpg",
+            "rating": 4.4,
+            "price": 49.99,
+            "brand": "TechType",
+            "availability": "In Stock"
+        },
+        {
+            "id": "24",
+            "title": "Running Shoes",
+            "description": "Comfortable running shoes for active individuals.",
+            "image": "https://example.com/products/runningshoes.jpg",
+            "rating": 4.6,
+            "price": 89.99,
+            "brand": "RunFit",
+            "availability": "In Stock"
+        },
+        {
+            "id": "25",
+            "title": "Blender",
+            "description": "Powerful blender for smoothies and food preparation.",
+            "image": "https://example.com/products/blender.jpg",
+            "rating": 4.5,
+            "price": 59.99,
+            "brand": "BlendPro",
+            "availability": "In Stock"
+        },
+        {
+            "id": "26",
+            "title": "Outdoor Grill",
+            "description": "Outdoor grill for BBQ enthusiasts.",
+            "image": "https://example.com/products/grill.jpg",
+            "rating": 4.7,
+            "price": 199.99,
+            "brand": "GrillMaster",
+            "availability": "In Stock"
+        },
+        {
+            "id": "27",
+            "title": "Backpack",
+            "description": "Durable backpack for daily use and travel.",
+            "image": "https://example.com/products/backpack2.jpg",
+            "rating": 4.3,
+            "price": 69.99,
+            "brand": "TravelMate",
+            "availability": "Out Of Stock"
+        }
+    ]
+}

@@ -3,15 +3,16 @@ import { Link, useNavigate } from 'react-router-dom';
 import { useElements, useStripe, CardElement } from '@stripe/react-stripe-js';
 
 import './Payment.css'
-import axios from './axios';
-import { useStateValue } from './StateProvider'
-import CheckoutProduct from './CheckoutProduct';
-import { getBasketPrice } from './Subtotal';
-import { getBasketTotal } from './reducer';
-import { db } from './firebase';
+import axios from '../axios';
+import { useStateValue } from '../StateProvider'
+import CheckoutProduct from '../CheckoutProduct';
+import { getBasketPrice } from '../Subtotal';
+import { getBasketTotal } from '../reducer';
+import { db } from '../firebase';
 
 const Payment = () => {
     const [{ basket, user }, dispatch] = useStateValue();
+    // The useNavigate hook returns a function that lets you navigate programmatically, for example after a form is submitted.
     const history = useNavigate();
 
     const stripe = useStripe();
@@ -39,25 +40,94 @@ const Payment = () => {
     }, [basket])
 
     console.log('Client_Secrete : ', clientSecret)
-    console.log('User is : ', user)
+    console.log("User is :", user)
+    console.log('User Email is : ', user.email)
 
     const handleSubmit = async (e) => {
         // All the Stripe processing and payment related stuffs goes here
         e.preventDefault();
         setProcessing(true);
 
-        // It is this 'clientSecret' which tells the 'stripe' how much to charge the customers
-        const payload = await stripe.confirmCardPayment(clientSecret, {
-            payment_method: {
-                card: elements.getElement(CardElement)
-                // card: {
-                //     token: 'tok_visa',
-                // },
-            }
-        }).then(({ paymentIntent }) => {
+        // let date = new Date()
+        // const payment_method = {
+        //     "id": clientSecret,
+        //     "object": "payment_method",
+        //     "billing_details": {
+        //         "address": {
+        //             "city": "Ghaziabad",
+        //             "country": "INDIA",
+        //             "line1": null,
+        //             "line2": null,
+        //             "postal_code": "201009",
+        //             "state": "Uttar Pradesh"
+        //         },
+        //         "email": "patelanandmja2002@gmail.com",
+        //         "name": "ANAND KUMAR PATEL",
+        //         "phone": "8887810186"
+        //     },
+        //     "card": {
+        //         "brand": "visa",
+        //         "checks": {
+        //             "address_line1_check": null,
+        //             "address_postal_code_check": null,
+        //             "cvc_check": "unchecked"
+        //         },
+        //         "country": "US",
+        //         "exp_month": 8,
+        //         "exp_year": 2026,
+        //         "fingerprint": "mToisGZ01V71BCos",
+        //         "funding": "credit",
+        //         "generated_from": null,
+        //         "last4": "4242",
+        //         "networks": {
+        //             "available": [
+        //                 "visa"
+        //             ],
+        //             "preferred": null
+        //         },
+        //         "three_d_secure_usage": {
+        //             "supported": true
+        //         },
+        //         "wallet": null
+        //     },
+        //     "created": date.now(),
+        //     "customer": null,
+        //     "livemode": false,
+        //     "metadata": {},
+        //     "type": "card"
+        // }
 
-            console.log("paymentIntent is : ", { paymentIntent })
+        // It is this 'clientSecret' which tells the 'stripe' how much to charge the customers
+        // const payload = await stripe.confirmCardPayment(clientSecret, {
+        await stripe.confirmCardPayment(clientSecret, {
+            // payment_method: {
+            //     card: elements.getElement(CardElement)
+            // }
+            payment_method: {
+                card: elements.getElement(CardElement),
+                "billing_details": {
+                    "address": {
+                        "city": "Ghaziabad",
+                        "country": "IN",
+                        "postal_code": "201009",
+                        "state": "Uttar Pradesh"
+                    },
+                    "email": `${user.email}`,
+                    "name": "ANAND KUMAR PATEL",
+                    "phone": "8887810186"
+                },
+            }
+        }).then((paymentIntent) => {
+
+            console.log("paymentIntent is : ", paymentIntent);
+            console.log("paymentIntent error id is : ", paymentIntent.error.payment_intent.id);
+            console.log("paymentIntent id is : ", paymentIntent.id);
+            console.log("paymentIntent total amount is : ", paymentIntent.error.payment_intent.amount);
             // 'paymentIntent' is just the payment Confirmation
+
+            let date = new Date(); // for publish at info
+            let curDate = new Array(date.getDate(), date.getMonth(), date.getFullYear());
+            let curTime = new Array(date.getHours(), date.getMinutes(), date.getSeconds());
 
             // Here, We are creating/accessing the DB with collection of 'users' specific to their id
             // Inside the 'users' collection we have 'orders' collection with payment id && setting parameter further
@@ -68,11 +138,22 @@ const Payment = () => {
                 .doc(paymentIntent.id)
                 .set({
                     basket: basket,
-                    amount: paymentIntent.amount,
-                    created: paymentIntent.created
+                    amount: paymentIntent.amount || paymentIntent.error.payment_intent.amount,
+                    // created: paymentIntent.created,
+                    // publishedAt_date: arr[0],
+                    // publishedAt_month: arr[1],
+                    // publishedAt_year: arr[2],
+                    publishedAt_date: `${curDate[0]}-${curDate[1] + 1}-${curDate[2]}`,
+                    publishedAt_time: curTime[0] > 12 ? `${curTime[0] - 12}:${curTime[1]}PM` : `${curTime[0]}:${curTime[1]}AM`
+                }).then(res => {
+                    console.log("Result after DB Updation", res)
+                }).catch(err => {
+                    console.log("Error occured", err)
                 })
 
-            setSucceeded(true)
+            console.log("paymentIntent id is : ", paymentIntent.id);
+
+            setSucceeded(true);
             setError(null)
             setProcessing(false)
 
@@ -80,6 +161,7 @@ const Payment = () => {
                 type: 'EMPTY_BASKET'
             })
 
+            // The replace options property is a REPLACE navigation action.
             // 'replace: true', the navigation will replace the current entry in the history stack instead of adding a new one
             history('/orders', { replace: true })
         })
@@ -142,9 +224,9 @@ const Payment = () => {
                             <CardElement onChange={handleChange} />
 
                             <div className='payment__priceContainer'>
-                                <h3>Order Total : {value}</h3>
+                                <h3 className='m-2'>Order Total : {value}</h3>
 
-                                <button disabled={processing || disabled || succeeded}>
+                                <button className='btn btn-warning col-lg-10 col-12' disabled={processing || disabled || succeeded}>
                                     <span>{processing ? <p>Processing</p> : "Buy Now"}</span>
                                 </button>
                             </div>

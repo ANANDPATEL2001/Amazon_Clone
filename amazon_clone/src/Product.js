@@ -25,7 +25,7 @@ const Product = ({ id, title, image, price, rating }) => {
     return (
         <div className='product'>
             <div className='product__info'>
-                <p>{title}</p>
+                <p className='container h-30'>{title}</p>
                 <p className='product__price'>
                     <small>$</small>
                     <strong>{price}</strong>
@@ -35,9 +35,9 @@ const Product = ({ id, title, image, price, rating }) => {
                 </div>
             </div>
 
-            <img src={image} alt='Loading...' />
+            <img className='img-fluid' src={image} alt='Loading...' />
 
-            <button onClick={addToBasket}>Add to Basket</button>
+            <button className='btn btn-warning col-lg-8 col-md-4' onClick={addToBasket}>Add to Basket</button>
         </div>
     )
 }

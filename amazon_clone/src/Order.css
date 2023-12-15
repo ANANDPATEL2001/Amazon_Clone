@@ -1,14 +1,23 @@
 .order {
-    padding: 40px;
+    /* padding: 40px; */
     margin: 20px 0;
-    background-color: lightgray;
+    background-color: whitesmoke;
     position: relative;
-    border: 1px solid lightgrey;
+    border: 2px solid lightgrey;
+    border-radius: 15px;
+}
+
+.order__details {
+    width: 100%;
+    max-height: 100px;
+    padding: 1rem;
+    background-color: lightgray
 }
 
 .order__id {
     position: absolute;
-    top: 40px;
+    padding-right: 0.1rem;
+    top: 20px;
     right: 20px;
 }
 

@@ -34,8 +34,8 @@ app.post('/payments/create', async (req, res) => {
         // Following 'total' amount is the sub-units of currency
         amount: total,
         currency: 'usd',
-        payment_method: 'pm_card_visa',
-        payment_method_types: ['card'],
+        // payment_method_types: ['card'],
+        automatic_payment_methods: { enabled: true },
     });
 
     res.status(201).send({
@@ -49,3 +49,7 @@ exports.api = functions.https.onRequest(app);
 // API endpoint Example
 // http://127.0.0.1:5001/clone-1d0ef/us-central1/api
 // An endpoint is a component of an API, while an API is a set of rules that allow two applications to share resources. Endpoints are the locations of the resources, and the API uses endpoint URLs to retrieve the requested resources
+
+
+
+// http://127.0.0.1:5001/clone-1d0ef/us-central1/api

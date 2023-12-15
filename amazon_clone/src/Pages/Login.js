@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 // import useHistory from 'use-history';
 
 import './Login.css';
-import { auth } from './firebase';
+import { auth } from '../firebase';
 
 // 'useHistory' provides several different implementations for managing session history in JavaScript in various environments.
 const Login = () => {
@@ -47,10 +47,10 @@ const Login = () => {
                 <h1>Sign-in</h1>
                 <form>
                     <h5>E-mail</h5>
-                    <input type='text' value={email} onChange={e => setEmail(e.target.value)} />
+                    <input className='container' type='text' value={email} onChange={e => setEmail(e.target.value)} />
 
                     <h5>Password</h5>
-                    <input type='password' value={password} onChange={e => setPassword(e.target.value)} />
+                    <input className='container' type='password' value={password} onChange={e => setPassword(e.target.value)} />
 
                     <button type='submit' onClick={signIn} className='login__signInButton'>Sign In</button>
                 </form>

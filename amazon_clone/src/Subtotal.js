@@ -28,17 +28,19 @@ const Subtotal = () => {
         }).format(getBasketPrice(basket));
 
     return (
-        <div className='subtotal'>
-            <p>
-                Subtotal ({basket.length} items):
-                <strong>
-                    {value};
-                </strong>
-            </p>
-            <small className='subtotal__gift'>
-                <input type='checkbox' />This Order contains a gift
-            </small>
-            <button onClick={e => history('/payment')}>Proceed to Checkout</button>
+        <div>
+            <div className='subtotal start-50 end-50'>
+                <p>
+                    Subtotal ({basket.length} items):
+                    <strong>
+                        {value};
+                    </strong>
+                </p>
+                <small className='subtotal__gift'>
+                    <input type='checkbox' />This Order contains a gift
+                </small>
+                <button className='btn btn-warning col-lg-12' onClick={e => history('/payment')}>Proceed to Checkout</button>
+            </div>
         </div>
     )
 }

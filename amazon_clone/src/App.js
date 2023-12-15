@@ -4,14 +4,16 @@ import { loadStripe } from '@stripe/stripe-js';
 import { Elements } from '@stripe/react-stripe-js';
 
 import './App.css';
-import Header from './Header';
-import Home from './Home';
-import Checkout from "./Checkout";
-import Login from "./Login";
+import Header from './Components/Header';
+import Footer from "./Components/Footer";
+import Home from './Pages/Home';
+import Checkout from "./Pages/Checkout";
+import Login from "./Pages/Login";
 import { auth } from "./firebase";
 import { useStateValue } from "./StateProvider";
-import Payment from "./Payment";
-import Orders from "./Orders";
+import Payment from "./Pages/Payment";
+import Orders from "./Pages/Orders";
+import HOC from "./Components/HOC";
 
 // 'loadstripe()' method basically takes the Payment API as an input 
 // This API is public (test mode) hence no need to hide it(for security reasons)
@@ -59,24 +61,26 @@ function App() {
             <Fragment>
               <Header />
               <Orders />
+              <Footer />
             </Fragment>
           } />
           <Route path="/checkout" Component={() =>
             <Fragment>
               <Header />
               <Checkout />
+              <Footer />
             </Fragment>
           } />
           <Route path="/payment" Component={() =>
             <Fragment>
               <Header />
               <Elements stripe={promise}><Payment /></Elements>
+              <Footer />
             </Fragment>
           } />
           <Route path="/" Component={() =>
             <Fragment>
-              <Header />
-              <Home />
+              <HOC />
             </Fragment>
           } />
         </Routes>

@@ -4,7 +4,7 @@ export const initialState = {
     user: null
 };
 
-// Now we are using the 'Selector' whic is basically used in Production Environment
+// Now we are using the 'Selector' which is basically used in Production Environment
 // Initial value of the 'amount' is passed as 0
 export const getBasketTotal = (basket) =>
     basket?.reduce((amount, item) => item.price + amount, 0);

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
 import './CheckoutProduct.css';
 import { useStateValue } from './StateProvider';
@@ -6,6 +6,12 @@ import { useStateValue } from './StateProvider';
 const CheckoutProduct = ({ id, image, title, price, rating, hideButton }) => {
 
     const [{ basket }, dispatch] = useStateValue();
+    const [windowWidth, setWindowWidth] = useState(window.innerWidth)
+    const [newTitle, setNewTitle] = useState(title)
+
+    const handleWidth = () => {
+        setWindowWidth(window.innerWidth)
+    }
 
     const removeFromBasket = () => {
         dispatch({
@@ -14,12 +20,39 @@ const CheckoutProduct = ({ id, image, title, price, rating, hideButton }) => {
         })
     };
 
+    useEffect(() => {
+        window.addEventListener('resize', handleWidth)
+
+        return () => {
+            window.removeEventListener('resize', handleWidth)
+        }
+    }, [])
+
+    useEffect(() => {
+        changeTitle(newTitle);
+    }, [window.innerWidth])
+
+
+    const changeTitle = (t) => {
+        // console.log(typeof (t));
+        // console.log(t);
+        if (windowWidth <= 720) {
+            setNewTitle((t.length > 20) ? (t.substr(0, 20) + "...") : t);
+            // console.log("This is newTitle", newTitle)
+        }
+        else {
+            setNewTitle(title)
+            // console.log("This is newTitle", newTitle)
+        }
+    }
+
+
     return (
         <div className='checkoutProduct'>
-            <img className='checkoutProduct__image' src={image} alt='Loading your Product' />
+            <img className='img-fluid checkoutProduct__image' src={image} alt='Loading your Product' />
 
             <div className='checkoutProduct__info'>
-                <p className='checkoutProduct__title'>{title}</p>
+                <p className='checkoutProduct__title'>{newTitle}</p>
                 <p className='checkoutProduct__price'>
                     <small>$</small>
                     <strong>{price}</strong>
@@ -29,7 +62,7 @@ const CheckoutProduct = ({ id, image, title, price, rating, hideButton }) => {
                     {Array(rating).fill().map((_, i) => (<p>🌟</p>))}
                 </div>
                 {!hideButton && (
-                    <button onClick={removeFromBasket}>Remove from Basket</button>
+                    <button className='btn btn-warning col-lg-5' onClick={removeFromBasket}>Remove from Basket</button>
                 )}
             </div>
 
