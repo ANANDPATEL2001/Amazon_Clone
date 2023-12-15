@@ -10,6 +10,7 @@ In order to Clone it from GitHub you need to use the following command before st
 - firebase login
 
 # From functions (i.e. Back-End)
+- npm install
 - firebase emulators : start
 
 ## Front-End
@@ -18,3 +19,14 @@ In order to Clone it from GitHub you need to use the following command before st
 - react-scripts
 - web-vitals
 - materialUI - Material UI is an open-source React component library that implements Google's Material Design.
+
+For this project we have used following -
+
+<!-- - TailwindCSS - Utility based CSS Framework including many UI components
+- React Slick - carousel component (for carousel) -->
+<!-- - Headless UI - component for tailwind CSS/React -->
+<!-- - Slick Carousel - for CSS and Fonts -->
+- Axios - promise based HTTP client
+- React icons - React icons for our React project
+- react-router-dom - npm package for featuring Routing in clint & server side in React
+- react-context-api - Where we can store or update date from anywhere i.e.data from any component & also we can access it from anywhere in the component
